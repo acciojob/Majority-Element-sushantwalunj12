@@ -1,19 +1,31 @@
-//your code here
 function majorityElement(nums) {
-  let temp = 0;
-  let abc = nums[0];
+  let count = 0;
+  let candidate = null;
   
   for (let i = 0; i < nums.length; i++) {
-    if (temp === 0) {
-      abc = nums[i];
+    if (count === 0) {
+      candidate = nums[i];
     }
     
-    if (nums[i] === abc) {
-      temp++;
+    if (nums[i] === candidate) {
+      count++;
     } else {
-      temp--;
+      count--;
     }
   }
   
-  return abc;
+  count = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === candidate) {
+      count++;
+    }
+  }
+  
+  if (count > Math.floor(nums.length / 2)) {
+    return candidate;
+  } else {
+    return null; 
+  }
 }
+
+// console.log(majorityElement([2, 1, 2])); 
