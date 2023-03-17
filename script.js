@@ -1,31 +1,15 @@
 function majorityElement(nums) {
-  let count = 0;
-  let candidate = null;
-  
-  for (let i = 0; i < nums.length; i++) {
-    if (count === 0) {
-      candidate = nums[i];
+	let map = new Map();
+ 
+        for(let i = 0; i < arr.length; i++) {
+            if (map.has(arr[i])) {
+                    let count = map.get(arr[i]) +1;
+                    if (count > arr.length /2) {
+                        return arr[i];
+                    } else map.set(arr[i], count);
+            }
+            else map.set(arr[i],1);
+            }
+            return 1;
     }
-    
-    if (nums[i] === candidate) {
-      count++;
-    } else {
-      count--;
-    }
-  }
-  
-  count = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === candidate) {
-      count++;
-    }
-  }
-  
-  if (count > Math.floor(nums.length / 2)) {
-    return candidate;
-  } else {
-    return null; 
-  }
 }
-
-// console.log(majorityElement([2, 1, 2])); 
